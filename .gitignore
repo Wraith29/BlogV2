@@ -2,3 +2,6 @@
 /.mypy_cache
 /.vscode
 /instance
+.python-version
+__pycache__
+*.pyc
