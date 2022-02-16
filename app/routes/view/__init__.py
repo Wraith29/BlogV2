@@ -1,7 +1,6 @@
 from flask import Blueprint
 
-
-view_bp = Blueprint('view', __name__)
+view_bp = Blueprint("view", __name__)
 
 from .home import home_bp
 view_bp.register_blueprint(home_bp)

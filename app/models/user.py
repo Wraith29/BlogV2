@@ -1,10 +1,7 @@
-from dataclasses import dataclass
-
-
-@dataclass
 class User:
-    id: int
-    username: str
-    password: str
+    def __init__(self, id: int | None, username: str, password: str) -> None:
+        self.id = id
+        self.username = username
+        self.password = password
 
 __all__ = ['User']
