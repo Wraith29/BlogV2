@@ -3,6 +3,10 @@ from typing import Dict
 
 from flask import Flask
 
+def print_routes(app: Flask) -> None:
+    for rule in app.url_map.iter_rules():
+        print(rule)
+
 def create_app(test_config: Dict[str, str] | None = None) -> Flask:
     app = Flask(__name__, instance_relative_config = True)
     app.config.from_mapping(
@@ -23,8 +27,10 @@ def create_app(test_config: Dict[str, str] | None = None) -> Flask:
     from . import db
     db.init_app(app)
 
-    from .routes import auth_bp, data_bp
+    from .routes import auth_bp, view_bp
     app.register_blueprint(auth_bp)
-    app.register_blueprint(data_bp)
+    app.register_blueprint(view_bp)
+
+    # print_routes(app)
 
     return app

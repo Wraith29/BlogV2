@@ -1,11 +1,5 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<form action="/auth/login/login" method="post">
-    <label id="username-label" for="username-input">Username</label>
-    <input id="username-input" name="username" type="text" /> 
-    <label id="password-label" for="password-input">Password</label>
-    <input id="password-input" name="password" type="password" />
-    <input id="submit-button" type="submit" value="Submit" />
-</form>
+    {% include 'auth/user-details-form.html' ignore missing %}
 {% endblock %}
