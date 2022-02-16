@@ -1,0 +1,8 @@
+:root {
+  --bg-colour: #123456;
+  --fg-colour: #654321;
+  --nav-bg-colour: #234567;
+  --nav-fg-colour: #765432;
+  --nav-text-colour: #fff;
+  --nav-active-underline: #f00;
+}

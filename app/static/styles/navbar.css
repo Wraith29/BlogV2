@@ -1,0 +1,30 @@
+.navbar {
+  background-color: var(--nav-bg-colour);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+}
+
+.navbar-items {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-item {
+  margin: auto 20px;
+}
+
+.nav-link,
+.nav-link:visited,
+.nav-link:hover {
+  color: var(--nav-text-colour);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  font-size: 20px;
+}
+
+.nav-link.active {
+  text-decoration-color: var(--nav-active-underline);
+}
