@@ -5,4 +5,11 @@
 
 body {
   background-color: var(--bg-colour);
+  color: var(--fg-colour);
+}
+
+.body-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

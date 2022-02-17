@@ -4,7 +4,7 @@ from flask import (Blueprint,Response,flash,redirect,
                     render_template,request,url_for)
 
 from app.db import get_db
-from app.utilities import get_user_by_username
+from app.utilities import flash_and_redirect, get_user_by_username
 
 register_bp = Blueprint("register", __name__, url_prefix="/register")
 
@@ -19,8 +19,7 @@ def view() -> Tuple[str, int]:
 def register() -> Tuple[Response, int]:
     user_exists = get_user_by_username(get_db(), request.form)
     if user_exists:
-        flash("Username Taken", "error")
-        return redirect(url_for("auth.login.view")), 301
+        return flash_and_redirect(('Username Taken', 'error'), 'auth.login.view', 301)
 
     # TODO: add register stuff
     return redirect(url_for("view.home.home")), 200

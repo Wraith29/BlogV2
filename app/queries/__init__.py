@@ -1,3 +1,4 @@
 from .user import UserQueries
+from .post import PostQueries
 
-__all__ = ["UserQueries"]
+__all__ = ["UserQueries", "PostQueries"]

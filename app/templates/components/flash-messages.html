@@ -1,0 +1,9 @@
+<div id="flash-messages">
+    {% with messages = get_flashed_messages(True) %}
+    {% if messages %}
+    {% for cat,message in messages %}
+    <span class="flash-category-{{cat}}">{{message}}</span>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
