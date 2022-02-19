@@ -11,6 +11,12 @@ def get_user_by_username(db: sql.Connection, form: Dict[str, str]) -> User | Non
     exists = db.execute(UserQueries.GetUserByUsername, [form["username"]]).fetchone()
     return User(*exists) if exists else None
 
+def create_user(db: sql.Connection, user: User) -> int:
+    db.execute(UserQueries.CreateUser, [user.username, user.password])
+    id = db.execute("SELECT last_insert_rowid()").fetchone()[0]
+    print(id)
+    return 0
+
 def get_user_by_id(db: sql.Connection, id: int) -> User | None:
     exists = db.execute(UserQueries.GetUserById, [id]).fetchone()
     return User(*exists) if exists else None
