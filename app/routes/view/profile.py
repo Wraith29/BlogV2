@@ -8,6 +8,7 @@ profile_bp = Blueprint('profile', __name__, url_prefix='/profile')
 
 @profile_bp.route('/<int:user_id>', methods=['GET'])
 def view(user_id: int) -> Tuple[str, int]:
+    print("profile: %d" % user_id)
     posts = get_posts_by_user_id(get_db(), user_id)
     return render_template('view/profile.html', posts=posts), 200
 

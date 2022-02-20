@@ -31,9 +31,9 @@ def is_valid_username(username: str) -> bool:
             return False
     return True 
 
-def flash_and_redirect(flash_details: Tuple[str, str], redirect_route: str, status_code: int) -> Tuple[Response, int]:
+def flash_and_redirect(flash_details: Tuple[str, str], redirect_route: str) -> Tuple[Response, int]:
     flash(*flash_details)
-    return redirect(url_for(redirect_route)), status_code
+    return redirect(url_for(redirect_route)), 302
 
 __all__ = [
     "get_user_by_username",

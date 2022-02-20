@@ -19,15 +19,15 @@ def view() -> Tuple[str, int]:
 def login() -> Tuple[Response, int]:
     user_exists = get_user_by_username(get_db(), request.form)
     if not user_exists:
-        return flash_and_redirect(('User not found', 'error'), 'auth.register.view', 301)
+        return flash_and_redirect(('User not found', 'error'), 'auth.register.view')
 
     if not check_password_hash(user_exists.password, request.form['password']):
-        return flash_and_redirect(('Incorrect username or password', 'error'), 'auth.login.view', 301)
+        return flash_and_redirect(('Incorrect username or password', 'error'), 'auth.login.view')
     
     session['current_user'] = user_exists.get_json()
     flash("Logged in", "success")
 
-    return redirect(url_for('view.home.home')), 200
+    return redirect(url_for('view.home.home')), 302
 
 
 __all__ = ["login_bp"]

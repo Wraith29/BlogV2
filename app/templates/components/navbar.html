@@ -5,8 +5,12 @@
     </li>
     {% if session.get('current_user') %}
     <li class="navbar-item">
-      <a id="profile-link" class="nav-link"><span>Profile</span></a>
+      <a id="profile-link" href="/profile/{{session.get('current_user').id}}" class="nav-link"><span>Profile</span></a>
     </li>
-    {% endif %}  
+    {% else %}
+    <li class="navbar-item">
+      <a id="login-link" href="/auth/login/" class="nav-link"><span>Login</span></a>
+    </li>
+    {% endif %}
   </ul>
 </nav>
