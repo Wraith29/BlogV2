@@ -1,15 +1,38 @@
 <nav id="navbar" class="navbar">
-  <ul id="navbar-items" class="navbar-items">
+  <ul id="navbar-items-center" class="nav-links centered">
     <li class="navbar-item">
-      <a id="home-link" href="/" class="nav-link"><span>Home</span></a>
+      <a id="home-link" href="/" class="nav-link">
+        <span>
+          Home
+        </span>
+      </a>
     </li>
     {% if session.get('current_user') %}
     <li class="navbar-item">
-      <a id="profile-link" href="/profile/{{session.get('current_user').id}}" class="nav-link"><span>Profile</span></a>
+      <a id="profile-link" href="/profile/{{session.get('current_user').id}}" class="nav-link">
+        <span>
+          Profile
+        </span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  <ul id="navbar-items-right" class="nav-links right">
+    {% if session.get('current_user') %}
+    <li class="navbar-item">
+      <a href="/auth/logout/" class="nav-link right">
+        <span>
+          Logout
+        </span>
+      </a>
     </li>
     {% else %}
     <li class="navbar-item">
-      <a id="login-link" href="/auth/login/" class="nav-link"><span>Login</span></a>
+      <a href="/auth/login/" class="nav-link right">
+        <span>
+          Login
+        </span>
+      </a>
     </li>
     {% endif %}
   </ul>

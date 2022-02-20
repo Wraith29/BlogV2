@@ -36,8 +36,6 @@
   <body>
     {% include 'components/navbar.html' %} 
     {% include 'components/flash-messages.html' %}
-    <div class="body-container">{% block content %}{% endblock %}
-      <a href="/auth/logout/">Logout</a>
-    </div>
+    <div class="body-container">{% block content %}{% endblock %}</div>
   </body>
 </html>
