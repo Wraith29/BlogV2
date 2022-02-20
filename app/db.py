@@ -1,5 +1,5 @@
 import sqlite3 as sql
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
 import click
 from flask import Flask, current_app, g
@@ -7,7 +7,7 @@ from flask.cli import with_appcontext
 
 from app.queries import UserQueries
 
-def get_db() -> sql.Connection | Any:
+def get_db() -> Union[sql.Connection, Any]:
     if "db" not in g:
         g.db = sql.connect(
             current_app.config["DATABASE"], 
@@ -17,7 +17,7 @@ def get_db() -> sql.Connection | Any:
 
     return g.db
 
-def close_db(_: Optional[BaseException] | None) -> None:
+def close_db(_: Union[Optional[BaseException], None]) -> None:
     db = g.pop("db", None)
     if db is not None:
         db.close()

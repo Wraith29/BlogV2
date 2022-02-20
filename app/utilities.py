@@ -1,13 +1,13 @@
 import sqlite3 as sql
 import string
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any, Tuple, Union
 
 from flask import Response, session, flash, redirect, url_for
 
 from app.models import User, Post
 from app.queries import UserQueries, PostQueries
 
-def get_user_by_username(db: sql.Connection, form: Dict[str, str]) -> User | None:
+def get_user_by_username(db: sql.Connection, form: Dict[str, str]) -> Union[User, None]:
     exists = db.execute(UserQueries['GetUserByUsername'], [form["username"]]).fetchone()
     return User(*exists) if exists else None
 
@@ -17,11 +17,11 @@ def create_user(db: sql.Connection, user: User) -> int:
     id = int(db.execute("SELECT last_insert_rowid()").fetchone()[0])
     return id
 
-def get_user_by_id(db: sql.Connection, id: int) -> User | None:
+def get_user_by_id(db: sql.Connection, id: int) -> Union[User, None]:
     exists = db.execute(UserQueries['GetUserById'], [id]).fetchone()
     return User(*exists) if exists else None
 
-def get_posts_by_user_id(db: sql.Connection, user_id: int) -> List[Post] | List[Any]:
+def get_posts_by_user_id(db: sql.Connection, user_id: int) -> Union[List[Post], List[Any]]:
     posts = db.execute(PostQueries['GetPostsByAuthorId'], [user_id]).fetchall()
     return [Post(*post) for post in posts] if posts else []
 
