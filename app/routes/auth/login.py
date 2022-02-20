@@ -1,7 +1,7 @@
 from typing import Tuple
 
-from flask import (Blueprint, Response, redirect,
-                   render_template, request, url_for)
+from flask import Blueprint, Response, flash, redirect, render_template, request, session, url_for
+from werkzeug.security import check_password_hash
 
 from app.db import get_db
 from app.utilities import flash_and_redirect, get_user_by_username
@@ -21,7 +21,13 @@ def login() -> Tuple[Response, int]:
     if not user_exists:
         return flash_and_redirect(('User not found', 'error'), 'auth.register.view', 301)
 
-    # TODO: add login stuff
-    return redirect(url_for("view.home.home")), 204
+    if not check_password_hash(user_exists.password, request.form['password']):
+        return flash_and_redirect(('Incorrect username or password', 'error'), 'auth.login.view', 301)
+    
+    session['current_user'] = user_exists.get_json()
+    flash("Logged in", "success")
+
+    return redirect(url_for('view.home.home')), 200
+
 
 __all__ = ["login_bp"]

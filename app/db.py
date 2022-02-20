@@ -36,7 +36,7 @@ def init_db_command() -> None:
 @click.command("list-users")
 @with_appcontext # type: ignore
 def list_users_command() -> None:
-    users = get_db().execute(UserQueries.GetAllUsers).fetchall()
+    users = get_db().execute(UserQueries['GetAllUsers']).fetchall()
     for user in users:
         print(user)
 
