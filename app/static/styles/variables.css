@@ -9,7 +9,7 @@
 
   --flash-bg-error: rgba(180, 0, 0, 0.698);
   --flash-fg-error: white;
-  --flash-bg-success: green;
+  --flash-bg-success: rgba(0, 128, 0, 0.63);
   --flash-fg-success: black;
   --flash-bg-info: yellow;
   --flash-fg-info: black;
