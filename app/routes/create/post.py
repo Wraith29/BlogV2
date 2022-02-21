@@ -8,7 +8,7 @@ post_bp = Blueprint('post', __name__, url_prefix='/post')
 def view() -> Tuple[str, int]:
     return render_template('input/post.html'), 200
 
-@post_bp.post('/create')
+@post_bp.post('/')
 def create() -> Response:
     return redirect(url_for('view.home.home'))
 
