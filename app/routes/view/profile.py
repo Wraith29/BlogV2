@@ -3,7 +3,7 @@ import typing as t
 from flask import Blueprint, render_template
 
 from app.db import get_db
-from app.utilities.creation import get_posts_by_user_id, get_all_users
+from app.utilities.fetch import get_posts_by_user_id, get_all_users
 
 profile_bp = Blueprint('profile', __name__, url_prefix='/profile')
 
