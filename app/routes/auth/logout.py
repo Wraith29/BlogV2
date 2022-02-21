@@ -12,6 +12,6 @@ def logout() -> Tuple[Response, int]:
         session.pop('current_user')
     except KeyError:
         return flash_and_redirect(('Not Logged In', 'info'), 'auth.login.view')
-    return redirect(url_for('auth.login.view')), 302
+    return flash_and_redirect(('Logged out', 'info'), 'auth.login.view')
 
 __all__ =['logout_bp']

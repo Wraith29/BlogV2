@@ -1,0 +1,34 @@
+#flash-messages {
+    background-color: transparent;
+    position: absolute;
+    right: 1px;
+    top: var(--nav-height);
+    width: 10%;
+    display: grid;
+}
+
+.error {
+    --flash-bg: var(--flash-bg-error);
+    --flash-fg: var(--flash-fg-error);
+}
+
+.success {
+    --flash-bg: var(--flash-bg-success);
+    --flash-fg: var(--flash-fg-success);
+}
+
+.info {
+    --flash-bg: var(--flash-bg-info);
+    --flash-fg: var(--flash-fg-info);
+}
+
+.flash-message {
+    text-align: center;
+    width: 100%;
+    background-color: var(--flash-bg);
+    color: var(--flash-fg);
+    opacity: 0;
+    transition: opacity 1s linear 3s;
+    border-radius: 10px;
+    margin: 1px;
+}

@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if session.get('current_user') %}
+      <script>
+        let cuid = "{{session.get('current_user').id}}";
+        let cuun = "{{session.get('current_user').username}}";
+        sessionStorage.setItem('current_user', JSON.stringify({id: cuid, username: cuun}));
+      </script>
+    {% endif %}
     <link
       rel="stylesheet"
       type="text/css"
@@ -24,12 +31,16 @@
       type="text/css"
       href="{{ url_for('static', filename='styles/form.css') }}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/flash.css') }}"
+    />
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='scripts/navbar.js') }}"
       defer
     ></script>
-
     {% block head %}{% endblock %}
     <title>BlogV2 - {% block title %}{% endblock %}</title>
   </head>

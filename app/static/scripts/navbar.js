@@ -4,6 +4,22 @@ const links = [
     '/', '/profile/all', '/auth/login/', '/auth/register/'
 ]
 
+const link_associations = [
+    ['/', 'home-link'],
+    ['/profile/all', 'profiles-link'],
+    ['/auth/login/', 'login-link'],
+    ['/auth/register/', 'register-link']
+];
+
+for ( let link of link_associations ) {
+    if ( window.location.pathname === link[0] && sessionStorage.getItem('active_link') !== link[1] ) {
+        sessionStorage.setItem('active_link', link[1]);
+    }
+};
+
+let current_user = JSON.parse(sessionStorage.getItem('current_user'));
+links.push(`/profile/${current_user.id}`);
+
 for ( let child of navbar.children ) {
     for ( let sub_child of child.children ) {
         let link = sub_child.querySelector('a.nav-link');

@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from flask import Blueprint, render_template, session
+from flask import Blueprint, render_template, session, flash
 
 home_bp = Blueprint("home", __name__)
 

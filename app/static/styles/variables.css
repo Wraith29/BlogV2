@@ -6,4 +6,11 @@
   --nav-text-colour: #fff;
   --nav-active-underline: #f00;
   --nav-height: 50px;
+
+  --flash-bg-error: red;
+  --flash-fg-error: white;
+  --flash-bg-success: green;
+  --flash-fg-success: black;
+  --flash-bg-info: yellow;
+  --flash-fg-info: black;
 }
