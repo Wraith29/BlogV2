@@ -7,7 +7,7 @@
   --nav-active-underline: #f00;
   --nav-height: 50px;
 
-  --flash-bg-error: red;
+  --flash-bg-error: rgba(180, 0, 0, 0.698);
   --flash-fg-error: white;
   --flash-bg-success: green;
   --flash-fg-success: black;
