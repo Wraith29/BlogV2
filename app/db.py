@@ -33,14 +33,6 @@ def init_db_command() -> None:
     init_db()
     click.echo("Initialised Database")
 
-@click.command("list-users")
-@with_appcontext # type: ignore
-def list_users_command() -> None:
-    users = get_db().execute(UserQueries['GetAllUsers']).fetchall()
-    for user in users:
-        print(user)
-
 def init_app(app: Flask) -> None:
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
-    app.cli.add_command(list_users_command)
