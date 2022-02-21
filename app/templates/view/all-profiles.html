@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
+{% block title %}Profiles{% endblock %}
 {% block content %}
-<div id="profile-list-container">
+<div id="profile-list">
     {% for user in users %}
     <div class="profile-card">
         <a href="/profile/{{user.id}}">
             <h4>{{user.username}}</h4>
+            <p>No. Posts: {{user.number_of_posts(get_db())}}</p>
         </a>
     </div>
     {% endfor %}

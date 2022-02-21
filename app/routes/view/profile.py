@@ -14,6 +14,6 @@ def view(user_id: int) -> Tuple[str, int]:
 @profile_bp.route('/all', methods=['GET'])
 def all() -> Tuple[str, int]:
     users = get_all_users(get_db())
-    return render_template('view/all-profiles.html', users=users), 200
+    return render_template('view/all-profiles.html', users=users, get_db=get_db), 200
 
 __all__ = ["profile_bp"]

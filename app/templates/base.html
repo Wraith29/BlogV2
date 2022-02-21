@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% if session.get('current_user') %}
-      <script>
-        let cuid = "{{session.get('current_user').id}}";
-        let cuun = "{{session.get('current_user').username}}";
-        sessionStorage.setItem('current_user', JSON.stringify({id: cuid, username: cuun}));
-      </script>
+    <script>
+      let cuid = "{{session.get('current_user').id}}";
+      let cuun = "{{session.get('current_user').username}}";
+      sessionStorage.setItem(
+        "current_user",
+        JSON.stringify({ id: cuid, username: cuun })
+      );
+    </script>
     {% endif %}
     <link
       rel="stylesheet"
@@ -35,6 +38,11 @@
       rel="stylesheet"
       type="text/css"
       href="{{ url_for('static', filename='styles/flash.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/profiles.css') }}"
     />
     <script
       type="text/javascript"

@@ -1,5 +1,7 @@
+import sqlite3 as sql
 from typing import Dict, Union
 
+from app.queries import PostQueries
 
 class User:
     def __init__(self, id: Union[int, None], username: str, password: str) -> None:
@@ -13,4 +15,8 @@ class User:
             "username": self.username
         }
         
+    def number_of_posts(self, db: sql.Connection) -> int:
+        posts = db.execute(PostQueries['GetPostsByAuthorId'], [self.id]).fetchall()
+        return len(posts)
+
 __all__ = ['User']

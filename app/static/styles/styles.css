@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: var(--nav-height);
+  margin-top: calc(10px + var(--nav-height));
 }
 
 .link,

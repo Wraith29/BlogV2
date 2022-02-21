@@ -7,6 +7,9 @@
   --nav-active-underline: #f00;
   --nav-height: 50px;
 
+  --profile-bg: rgb(67, 114, 200);
+  --profile-border-colour: white;
+
   --flash-bg-error: rgba(180, 0, 0, 0.698);
   --flash-fg-error: white;
   --flash-bg-success: rgba(0, 128, 0, 0.63);
