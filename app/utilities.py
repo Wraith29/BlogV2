@@ -7,6 +7,10 @@ from flask import Response, session, flash, redirect, url_for
 from app.models import User, Post
 from app.queries import UserQueries, PostQueries
 
+def get_all_users(db: sql.Connection) -> List[User]:
+    return [User(*user_data) for user_data in db.execute(UserQueries['GetAllUsers']).fetchall()]
+
+
 def get_user_by_username(db: sql.Connection, form: Dict[str, str]) -> Union[User, None]:
     exists = db.execute(UserQueries['GetUserByUsername'], [form["username"]]).fetchone()
     return User(*exists) if exists else None

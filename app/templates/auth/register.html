@@ -1,5 +1,13 @@
 {% extends 'base.html' %} 
 {% block title %}Register{% endblock %} 
 {% block content %} 
-{% include 'components/user-details-form.html' %} 
+<div class="form-page-container">
+    {% include 'components/user-details-form.html' %} 
+    <div id="login-link-container">
+        <span>
+            <p>Already have an account?</p>
+            <a id="login-link" class="link" href="/auth/login/">Login Here</a>
+        </span>
+    </div>
+</div>
 {% endblock %}

@@ -1,4 +1,5 @@
 <nav id="navbar" class="navbar">
+  <ul id="navbar-items-left" class="nav-links left"></ul>
   <ul id="navbar-items-center" class="nav-links centered">
     <li class="navbar-item">
       <a id="home-link" href="/" class="nav-link">
@@ -15,12 +16,20 @@
         </span>
       </a>
     </li>
+    {% else %}
+    <li class="navbar-item">
+      <a id="profiles-link" href="/profile/all" class="nav-link">
+        <span>
+          Profiles
+        </span>
+      </a>
+    </li>
     {% endif %}
   </ul>
   <ul id="navbar-items-right" class="nav-links right">
     {% if session.get('current_user') %}
     <li class="navbar-item">
-      <a href="/auth/logout/" class="nav-link right">
+      <a id="logout-link" href="/auth/logout/" class="nav-link right">
         <span>
           Logout
         </span>
@@ -28,7 +37,7 @@
     </li>
     {% else %}
     <li class="navbar-item">
-      <a href="/auth/login/" class="nav-link right">
+      <a id="login-link" href="/auth/login/" class="nav-link right">
         <span>
           Login
         </span>

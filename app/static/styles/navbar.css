@@ -5,11 +5,18 @@
   top: 0;
   width: 100%;
   overflow: auto;
-  height: auto;
+  height: var(--nav-height);
 }
 
 .nav-links {
+  display: flex;
   list-style-type: none;
+  align-items: center;
+  width: 33%;
+}
+
+.nav-links.centered {
+  justify-content: center;
 }
 
 .centered {
@@ -17,7 +24,7 @@
 }
 
 .right {
-  flex: right;
+  justify-content: right;
 }
 
 .nav-link,
@@ -25,4 +32,11 @@
 .nav-link:hover,
 .nav-link:active {
   color: var(--fg-colour);
+  font-size: 24px;
+  text-underline-offset: 10px;
+  margin: 0 10px;
+}
+
+.nav-link.active {
+  text-decoration-color: var(--nav-active-underline);
 }

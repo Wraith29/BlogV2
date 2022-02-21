@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="profile-list-container">
+    {% for user in users %}
+    <div class="profile-card">
+        <a href="/profile/{{user.id}}">
+            <h4>{{user.username}}</h4>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
