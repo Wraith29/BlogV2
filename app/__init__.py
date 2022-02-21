@@ -32,6 +32,6 @@ def create_app(test_config: Union[Dict[str, str], None] = None) -> Flask:
     app.register_blueprint(view_bp)
     app.register_blueprint(input_bp)
 
-    # print_routes(app)
+    print_routes(app)
 
     return app

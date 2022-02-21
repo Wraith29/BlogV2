@@ -11,3 +11,5 @@ def view() -> Tuple[str, int]:
 @post_bp.post('/create')
 def create() -> Response:
     return redirect(url_for('view.home.home'))
+
+__all__ = ["post_bp"]
