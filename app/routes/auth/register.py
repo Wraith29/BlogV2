@@ -11,16 +11,12 @@ from app.utilities import create_user, flash_and_redirect, get_user_by_id, get_u
 register_bp = Blueprint("register", __name__, url_prefix="/register")
 
 
-@register_bp.route("/", methods=["GET"])
+@register_bp.get("/")
 def view() -> Tuple[str, int]:
-    return (
-        render_template("auth/register.html",
-                        action_route="/auth/register/register"),
-        200
-    )
+    return render_template("auth/register.html", action_route="/auth/register/register"), 200
 
 
-@register_bp.route("/register", methods=["POST"])
+@register_bp.post("/register")
 def register() -> Tuple[Response, int]:
     user_exists = get_user_by_username(get_db(), request.form)
     if user_exists:
@@ -39,7 +35,7 @@ def register() -> Tuple[Response, int]:
     id = create_user(get_db(), new_user)
     user = get_user_by_id(get_db(), id)
     if not user:
-        return flash_and_redirect(("There was an with logging you in.", "error"), "auth.login.view", 500)
+        return flash_and_redirect(("There was an with logging you in.", "error"), "auth.login.view")
 
     session['current_user'] = json.dumps(user.get_json())
     flash("Logged in", 'success')

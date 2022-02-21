@@ -6,7 +6,7 @@ from app.utilities import flash_and_redirect
 
 logout_bp = Blueprint('logout', __name__, url_prefix='/logout')
 
-@logout_bp.route('/', methods=['GET'])
+@logout_bp.get('/')
 def logout() -> Tuple[Response, int]:
     try:
         session.pop('current_user')

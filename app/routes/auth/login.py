@@ -8,14 +8,14 @@ from app.utilities import flash_and_redirect, get_user_by_username
 
 login_bp = Blueprint("login", __name__, url_prefix="/login")
 
-@login_bp.route("/", methods=["GET"])
+@login_bp.get("/")
 def view() -> Tuple[str, int]:
     return (
         render_template("auth/login.html", action_route="/auth/login/login"), 
         200
     )
 
-@login_bp.route("/login", methods=["POST"])
+@login_bp.post("/login")
 def login() -> Tuple[Response, int]:
     user_exists = get_user_by_username(get_db(), request.form)
     if not user_exists:
