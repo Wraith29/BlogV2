@@ -27,9 +27,10 @@ def create_app(test_config: Union[Dict[str, str], None] = None) -> Flask:
     from . import db
     db.init_app(app)
 
-    from .routes import auth_bp, view_bp
+    from .routes import auth_bp, view_bp, input_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(view_bp)
+    app.register_blueprint(input_bp)
 
     # print_routes(app)
 
