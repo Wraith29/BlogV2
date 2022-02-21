@@ -1,5 +1,5 @@
 import os
-from typing import Dict, Union
+import typing as t
 
 from flask import Flask
 
@@ -7,7 +7,7 @@ def print_routes(app: Flask) -> None:
     for rule in app.url_map.iter_rules():
         print(rule)
 
-def create_app(test_config: Union[Dict[str, str], None] = None) -> Flask:
+def create_app(test_config: t.Union[t.Dict[str, str], None] = None) -> Flask:
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         DATABASE=os.path.join(app.instance_path, "db.sqlite"), 

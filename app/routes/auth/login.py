@@ -1,22 +1,23 @@
-from typing import Tuple
+import typing as t
 
 from flask import Blueprint, Response, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash
 
 from app.db import get_db
-from app.utilities import flash_and_redirect, get_user_by_username
+from app.utilities import flash_and_redirect
+from app.utilities.fetch import get_user_by_username
 
 login_bp = Blueprint("login", __name__, url_prefix="/login")
 
 @login_bp.get("/")
-def view() -> Tuple[str, int]:
+def view() -> t.Tuple[str, int]:
     return (
         render_template("auth/login.html", action_route="/auth/login/login"), 
         200
     )
 
 @login_bp.post("/login")
-def login() -> Tuple[Response, int]:
+def login() -> t.Tuple[Response, int]:
     user_exists = get_user_by_username(get_db(), request.form)
     if not user_exists:
         return flash_and_redirect(('User not found', 'error'), 'auth.register.view')

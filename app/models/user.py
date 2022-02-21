@@ -1,15 +1,15 @@
 import sqlite3 as sql
-from typing import Dict, Union
+import typing as t
 
 from app.queries import PostQueries
 
 class User:
-    def __init__(self, id: Union[int, None], username: str, password: str) -> None:
+    def __init__(self, id: t.Union[int, None], username: str, password: str) -> None:
         self.id = id
         self.username = username
         self.password = password
 
-    def get_json(self) -> Dict[str, Union[str, int, None]]:
+    def get_json(self) -> t.Dict[str, t.Union[str, int, None]]:
         return {
             "id": self.id,
             "username": self.username

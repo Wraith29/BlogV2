@@ -1,13 +1,13 @@
-from typing import Tuple
-from flask import Blueprint, Response, redirect, session, url_for
+import typing as t
+
+from flask import Blueprint, Response, session
 
 from app.utilities import flash_and_redirect
-
 
 logout_bp = Blueprint('logout', __name__, url_prefix='/logout')
 
 @logout_bp.get('/')
-def logout() -> Tuple[Response, int]:
+def logout() -> t.Tuple[Response, int]:
     try:
         session.pop('current_user')
     except KeyError:
