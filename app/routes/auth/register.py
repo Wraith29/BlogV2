@@ -29,13 +29,8 @@ def register() -> t.Tuple[Response, int]:
     new_user = User(None, request.form['username'], generate_password_hash(request.form['password']))
 
     id = create_user(get_db(), new_user)
-    user = get_user_by_id(get_db(), id)
-    if not user:
-        return flash_and_redirect(("There was an with logging you in.", "error"), "auth.login.view")
-
-    session['current_user'] = json.dumps(user.get_json())
-    flash("Logged in", 'success')
-    return redirect(url_for("view.home.home")), 302
+    flash('Account Created', 'success')
+    return redirect(url_for('auth.login.view')), 302
 
 
 __all__ = ["register_bp"]
