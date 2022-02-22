@@ -1,2 +1,20 @@
 {% extends 'base.html' %} 
 {% block title %}Home{% endblock %}
+{% block content %}
+<div class="home-container">
+    <div class="post-container">
+        {% for post in posts %}
+        <div class="post">
+            <h4 class="post-title">Title - {{post.title}}</h4>
+            <p class="post-body">Body - {{post.body}}</p>
+            {% for user in users %}
+                {% if user.id == post.author_id %}
+                <h6 class="post-author">{{user.username}}</h6>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/create/post/">New Post</a>
+</div>
+{% endblock %}

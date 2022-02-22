@@ -1,8 +1,8 @@
 PostQueries = {
-    "GetAllPosts": "SELECT * FROM post",
-    "GetPostById": "SELECT * FROM post WHERE id = ?",
-    "GetPostsByAuthorId": "SELECT * FROM post WHERE author_id = ?",
-    "CreatePost": "INSERT INTO post (title, content, author_id) VALUES (?, ?, ?)"
+    "GetAllPosts": "SELECT id, title, body, author_id FROM post",
+    "GetPostById": "SELECT id, title, body, author_id FROM post WHERE id = ?",
+    "GetPostsByAuthorId": "SELECT id, title, body, author_id FROM post WHERE author_id = ?",
+    "CreatePost": "INSERT INTO post (title, body, author_id) VALUES (?, ?, ?)"
 }
 
 __all__ = ["PostQueries"]

@@ -17,7 +17,7 @@ def view() -> t.Tuple[str, int]:
 @post_bp.post('/create')
 @login_required
 def create() -> Response:
-    new_post = Post(None, request.form['title'], request.form['body'], session['current_user'].id)
+    new_post = Post(None, request.form['title'], request.form['body'], session['current_user']['id'])
     create_post(get_db(), new_post)
     return redirect(url_for('view.home.home'))
 

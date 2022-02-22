@@ -6,5 +6,5 @@ class Post:
         self.title = title
         self.body = body
         self.author_id = author_id
-
+    
 __all__ = ["Post"]
