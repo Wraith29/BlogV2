@@ -1,16 +1,18 @@
-import os
-import typing as t
+__all__ = ["create_app"]
 
+import os
 from flask import Flask
+
 
 def print_routes(app: Flask) -> None:
     for rule in app.url_map.iter_rules():
         print(rule)
 
-def create_app(test_config: t.Union[t.Dict[str, str], None] = None) -> Flask:
+
+def create_app(test_config: dict[str, str] | None = None) -> Flask:
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        DATABASE=os.path.join(app.instance_path, "db.sqlite"), 
+        DATABASE=os.path.join(app.instance_path, "db.sqlite"),
         SECRET_KEY="dev"
     )
 
@@ -32,6 +34,6 @@ def create_app(test_config: t.Union[t.Dict[str, str], None] = None) -> Flask:
     app.register_blueprint(view_bp)
     app.register_blueprint(create_bp)
 
-    print_routes(app)
+    # print_routes(app)
 
     return app

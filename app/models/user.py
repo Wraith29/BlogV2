@@ -1,22 +1,16 @@
-import sqlite3 as sql
-import typing as t
+__all__ = ['User']
 
-from app.queries import PostQueries
+from dataclasses import dataclass
 
+
+@dataclass(frozen=True, slots=True)
 class User:
-    def __init__(self, id: t.Union[int, None], username: str, password: str) -> None:
-        self.id = id
-        self.username = username
-        self.password = password
+    id: int | None
+    username: str
+    password: str
 
-    def get_json(self) -> t.Dict[str, t.Union[str, int, None]]:
+    def get_json(self) -> dict[str, str | int | None]:
         return {
             "id": self.id,
             "username": self.username
         }
-        
-    def number_of_posts(self, db: sql.Connection) -> int:
-        posts = db.execute(PostQueries['GetPostsByAuthorId'], [self.id]).fetchall()
-        return len(posts)
-
-__all__ = ['User']
