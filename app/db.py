@@ -1,3 +1,5 @@
+__all__ = ["get_db", "init_app"]
+
 import sqlite3 as sql
 
 import click
