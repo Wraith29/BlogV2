@@ -29,21 +29,21 @@ def view() -> tuple[str, int]:
 
 @register_bp.post("/register")
 def register() -> tuple[Response, int]:
-    user_exists = get_user_by_username(get_db(), request.form)
+    user_exists = get_user_by_username(get_db(), request.form["username"])
     if user_exists:
         return flash_and_redirect(
-            ('Username Taken', 'error'),
+            ('Username Taken', 'danger'),
             'auth.login.view'
         )
 
     if not is_valid_username(request.form['username']):
         return flash_and_redirect(
-            ('Invalid Username', 'error'),
+            ('Invalid Username', 'danger'),
             'auth.register.view'
         )
 
     new_user = User(
-        None,
+        0,
         request.form['username'],
         generate_password_hash(request.form['password'])
     )

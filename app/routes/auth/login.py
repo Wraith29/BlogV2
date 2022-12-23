@@ -28,16 +28,16 @@ def view() -> tuple[str, int]:
 
 @login_bp.post("/login")
 def login() -> tuple[Response, int]:
-    user_exists = get_user_by_username(get_db(), request.form)
+    user_exists = get_user_by_username(get_db(), request.form["username"])
     if not user_exists:
         return flash_and_redirect(
-            ('User not found', 'error'),
+            ('User not found', 'danger'),
             'auth.register.view'
         )
 
     if not check_password_hash(user_exists.password, request.form['password']):
         return flash_and_redirect(
-            ('Incorrect username or password', 'error'),
+            ('Incorrect username or password', 'danger'),
             'auth.login.view'
         )
 

@@ -21,7 +21,7 @@ def login_required(
     def inner(*args: Any) -> T | tuple[Response, int]:
         if 'current_user' not in session:
             return flash_and_redirect(
-                ('You must be logged in to do that', 'error'),
+                ('You must be logged in to do that', 'danger'),
                 'auth.login.view'
             )
         return fn(*args)

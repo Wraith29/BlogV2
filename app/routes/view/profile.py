@@ -15,9 +15,16 @@ def view(user_id: int) -> tuple[str, int]:
 
 @profile_bp.get('/all')
 def all() -> tuple[str, int]:
-    users = get_all_users(get_db())
+    connection = get_db()
+    user_post_map = []
+    for user in get_all_users(connection):
+        user_post_map.append({
+            "user": user,
+            "posts": get_posts_by_user_id(connection, user.id)
+        })
+
     return render_template(
         'view/all-profiles.html',
-        users=users,
-        get_db=get_db
+        user_post_map=user_post_map,
+        len=len
     ), 200

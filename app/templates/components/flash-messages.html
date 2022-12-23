@@ -2,7 +2,7 @@
     {% with messages = get_flashed_messages(True) %}
     {% if messages %}
     {% for cat,message in messages %}
-    <div id="message-{{loop.index}}" class="flash-message {{cat}}">
+    <div id="message-{{loop.index}}" class="alert alert-{{cat}}" role="alert">
         <h3>{{message}}</h3>
     </div>
     {% endfor %}

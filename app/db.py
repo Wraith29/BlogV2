@@ -17,7 +17,7 @@ def get_db() -> sql.Connection:
 
     if not isinstance(g.db, sql.Connection):
         raise ConnectionError(
-            f"Could not connect to: database {current_app.config['DATABASE']}"
+            f"Could not connect to: {current_app.config['DATABASE']}"
         )
 
     return g.db
@@ -25,8 +25,11 @@ def get_db() -> sql.Connection:
 
 def close_db(_) -> None:
     db = g.pop("db", None)
-    if db is not None:
-        db.close()
+    try:
+        if db is not None:
+            db.close()
+    except AttributeError:
+        print("Could not close Database")
 
 
 def init_db() -> None:

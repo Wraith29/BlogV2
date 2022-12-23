@@ -1,48 +1,24 @@
-<nav id="navbar" class="navbar">
-  <ul id="navbar-items-left" class="nav-links left">
-    {% if session.get('current_user') %}
-    <li class="navbar-item">
-      <a id="profile-link" href="/profile/{{session.get('current_user').id}}" class="nav-link">
-        <span>
-          {{session.get('current_user').username}}
-        </span>
-      </a>
-    </li>
-    {% endif %}
-  </ul>
-  <ul id="navbar-items-center" class="nav-links centered">
-    <li class="navbar-item">
-      <a id="home-link" href="/" class="nav-link">
-        <span>
-          Home
-        </span>
-      </a>
-    </li>
-    <li class="navbar-item">
-      <a id="profiles-link" href="/profile/all" class="nav-link">
-        <span>
-          Profiles
-        </span>
-      </a>
-    </li>
-  </ul>
-  <ul id="navbar-items-right" class="nav-links right">
-    {% if session.get('current_user') %}
-    <li class="navbar-item">
-      <a id="logout-link" href="/auth/logout/" class="nav-link right">
-        <span>
-          Logout
-        </span>
-      </a>
-    </li>
-    {% else %}
-    <li class="navbar-item">
-      <a id="login-link" href="/auth/login/" class="nav-link right">
-        <span>
-          Login
-        </span>
-      </a>
-    </li>
-    {% endif %}
-  </ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      {% if session.get("current_user") %}
+      <li>
+        <a href="/profile/{{session.get('current_user').id}}">{{session.get("current_user").username}}</a>
+      </li>
+      {% endif %}
+      <li>
+        <a href="/profile/all">All Profiles</a>
+      </li>
+      <li>
+        {% if session.get("current_user") %}
+        <a href="/auth/logout">Logout</a>
+        {% else %}
+        <a href="/auth/login">Login</a>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
 </nav>

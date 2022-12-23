@@ -2,11 +2,11 @@
 {% block title %}Profiles{% endblock %}
 {% block content %}
 <div id="profile-list">
-    {% for user in users %}
-    <div class="profile-card">
-        <a href="/profile/{{user.id}}">
-            <h4>{{user.username}}</h4>
-            <p>No. Posts: {{user.number_of_posts(get_db())}}</p>
+    {% for upm in user_post_map %}
+    <div>
+        <a href="/profile/{{upm.user.id}}">
+            <h4>{{upm.user.username}}</h4>
+            <p>No. Posts: {{len(upm.posts)}}</p>
         </a>
     </div>
     {% endfor %}

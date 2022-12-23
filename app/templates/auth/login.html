@@ -1,9 +1,9 @@
 {% extends 'base.html' %} 
 {% block title %}Login{% endblock %} 
 {% block content %} 
-<div class="form-page-container">
+<div>
     {% include 'components/user-details-form.html' %}
-    <div id="register-link-container">
+    <div id="register-link-container" class="col-md-10 col-md-offset-1">
         <span>
             <p>Don't have an account?</p>
             <a id="register-link" class="link" href="/auth/register/">Register Here</a>
