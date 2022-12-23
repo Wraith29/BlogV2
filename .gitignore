@@ -6,3 +6,6 @@
 __pycache__
 *.pyc
 .flaskenv
+/htmlcov
+/.pytest_cache
+.coverage
